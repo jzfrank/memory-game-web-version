@@ -3,6 +3,8 @@ import { Fragment, useState } from "react";
 import GameBoard from "./GameBoard";
 import ScoreBoard from "./ScoreBoard";
 
+const totalPairs = 12;
+
 const MainWindow = () => {
   const [pairsClicked, setPairsClicked] = useState(0);
   const [pairsGuessed, setPairsGuessed] = useState(0);
@@ -12,10 +14,20 @@ const MainWindow = () => {
     <Fragment>
       {title}
       <ScoreBoard pairsClicked={pairsClicked} pairsGuessed={pairsGuessed} />
-      <GameBoard
-        incrementPairsClicked={() => setPairsClicked((prev) => prev + 1)}
-        incrementPairsGuessed={() => setPairsGuessed((prev) => prev + 1)}
-      />
+      {pairsGuessed !== 12 && (
+        <GameBoard
+          incrementPairsClicked={() => setPairsClicked((prev) => prev + 1)}
+          incrementPairsGuessed={() => setPairsGuessed((prev) => prev + 1)}
+        />
+      )}
+      {pairsGuessed === 12 && (
+        <>
+          <h1>Mission Accomplished!</h1>
+          <h1>You used {pairsClicked} trials to make all cards vanish.</h1>
+          <h1>Great job!</h1>
+          <h2>Refresh to restart</h2>
+        </>
+      )}
     </Fragment>
   );
 };

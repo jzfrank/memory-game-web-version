@@ -45,6 +45,7 @@ let CARDS = CARDS_RAW.map((card, index) => {
     img: card.img,
     isFront: false,
     isVanished: false,
+    isClickable: true,
   };
 });
 
@@ -55,9 +56,42 @@ const GameBoard = () => {
   const resetCards = () => {
     setCards((prevCards) =>
       prevCards.map((card) => {
-        return { ...card, isFront: false };
+        return { ...card, isFront: false, isClickable: true };
       })
     );
+  };
+
+  const disableClickOnCards = () => {
+    setCards((prevCards) =>
+      prevCards.map((card) => {
+        return { ...card, isClickable: false };
+      })
+    );
+  };
+
+  const vanishCardsIfPossible = () => {
+    const [card1, card2] = cards.filter((card) =>
+      flippedCards.includes(card.id)
+    );
+    console.table(card1);
+    console.table(card2);
+    if (card1.img === card2.img) {
+      setCards((prevCards) =>
+        prevCards.map((card) => {
+          if (flippedCards.includes(card.id)) {
+            return {
+              ...card,
+              isVanished: true,
+            };
+          } else {
+            return card;
+          }
+        })
+      );
+      return true;
+    } else {
+      return false;
+    }
   };
 
   const flipCardHandler = (id) => {
@@ -67,10 +101,16 @@ const GameBoard = () => {
     newCards[indexOfFlippedCard].isFront = true;
     setCards(newCards);
     flippedCards.push(id);
+
     if (flippedCards.length == 2) {
+      disableClickOnCards();
       // if vanishable
-      // if not vanishable
-      setTimeout(resetCards, 1000);
+      if (!vanishCardsIfPossible()) {
+        // if not vanishable
+        setTimeout(resetCards, 500);
+      } else {
+        resetCards();
+      }
       setFlippedCards([]);
     }
   };
@@ -83,7 +123,8 @@ const GameBoard = () => {
           id={card.id}
           src={"/assets/" + card.img}
           isFront={card.isFront}
-          isVanished={cards.isVanished}
+          isVanished={card.isVanished}
+          isClickable={card.isClickable}
           flipCardHandler={flipCardHandler}
         />
       ))}

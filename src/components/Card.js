@@ -1,4 +1,12 @@
 const Card = (props) => {
+  if (props.isVanished) {
+    return (
+      <div className="card">
+        <div className="vanished"></div>
+      </div>
+    );
+  }
+
   let className = "card";
   let content = <div className="back"></div>;
   if (!props.isVanished && props.isFront) {
@@ -8,13 +16,13 @@ const Card = (props) => {
     );
   }
 
-  if (props.isVanished) {
-    className += " vanished";
-  }
-
   const flipCardHandler = () => {
-    props.flipCardHandler(props.id);
+    if (props.isClickable) {
+      props.flipCardHandler(props.id);
+    }
   };
+
+  console.log("className:", className);
 
   return (
     <div className={className} onClick={flipCardHandler}>

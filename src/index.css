@@ -27,6 +27,7 @@ body {
   pointer-events: none;
 }
 
+
 .card.turned .front {
   transform: rotateY(0deg);
 }
@@ -36,7 +37,8 @@ body {
 }
 
 .card .back,
-.card .front {
+.card .front,
+.card .vanished {
   width: 71px;
   height: 71px;
   margin: 10px;
@@ -58,7 +60,7 @@ body {
 }
 
 .card .vanished {
-  background: #dddddd;
+  background-color: #dddddd;
 }
 
 #score {

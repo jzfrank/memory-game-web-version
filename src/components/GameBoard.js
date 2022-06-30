@@ -94,7 +94,7 @@ const GameBoard = (props) => {
     setCards(newCards);
     flippedCards.push(id);
 
-    if (flippedCards.length == 2) {
+    if (flippedCards.length === 2) {
       disableClickOnCards();
       if (!vanishCardsIfPossible()) {
         // if not vanishable

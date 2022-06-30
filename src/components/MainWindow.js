@@ -14,13 +14,13 @@ const MainWindow = () => {
     <Fragment>
       {title}
       <ScoreBoard pairsClicked={pairsClicked} pairsGuessed={pairsGuessed} />
-      {pairsGuessed !== 12 && (
+      {pairsGuessed !== totalPairs && (
         <GameBoard
           incrementPairsClicked={() => setPairsClicked((prev) => prev + 1)}
           incrementPairsGuessed={() => setPairsGuessed((prev) => prev + 1)}
         />
       )}
-      {pairsGuessed === 12 && (
+      {pairsGuessed === totalPairs && (
         <>
           <h1>Mission Accomplished!</h1>
           <h1>You used {pairsClicked} trials to make all cards vanish.</h1>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Card from "./Card";
+import { shuffle } from "../algorithms/shuffle";
 
 const CARDS_RAW = [
   { name: "aquaman", img: "aquaman.jpg" },
@@ -28,28 +29,19 @@ const CARDS_RAW = [
   { name: "thor", img: "thor.jpg" },
 ];
 
-// let cards = {};
-// let cnt = 0;
-// for (const card of CARDS_RAW) {
-//   cards[cnt] = {
-//     id: cnt,
-//     img: card.img,
-//     isFront: false,
-//     isVanished: false,
-//   }
-// }
+const CARDS = shuffle(
+  CARDS_RAW.map((card, index) => {
+    return {
+      id: index,
+      img: card.img,
+      isFront: false,
+      isVanished: false,
+      isClickable: true,
+    };
+  })
+);
 
-let CARDS = CARDS_RAW.map((card, index) => {
-  return {
-    id: index,
-    img: card.img,
-    isFront: false,
-    isVanished: false,
-    isClickable: true,
-  };
-});
-
-const GameBoard = () => {
+const GameBoard = (props) => {
   const [flippedCards, setFlippedCards] = useState([]);
   const [cards, setCards] = useState(CARDS);
 
@@ -104,14 +96,16 @@ const GameBoard = () => {
 
     if (flippedCards.length == 2) {
       disableClickOnCards();
-      // if vanishable
       if (!vanishCardsIfPossible()) {
         // if not vanishable
         setTimeout(resetCards, 500);
       } else {
+        // if vanishable
         resetCards();
+        props.incrementPairsGuessed();
       }
       setFlippedCards([]);
+      props.incrementPairsClicked();
     }
   };
 

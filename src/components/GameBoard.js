@@ -2,31 +2,45 @@ import { useState } from "react";
 import Card from "./Card";
 import { shuffle } from "../algorithms/shuffle";
 
+import aquaman from "../assets/aquaman.jpg";
+import batman from "../assets/batman.jpg";
+import captainAmerica from "../assets/captain-america.jpg";
+import fantasticFour from "../assets/fantastic-four.jpg";
+import flash from "../assets/flash.jpg";
+import greenArrow from "../assets/green-arrow.jpg";
+import greenLantern from "../assets/green-lantern.jpg";
+import ironman from "../assets/ironman.jpg";
+import spiderman from "../assets/spiderman.jpg";
+import superman from "../assets/superman.jpg";
+import theAvengers from "../assets/the-avengers.jpg";
+import thor from "../assets/thor.jpg";
+
 const CARDS_RAW = [
-  { name: "aquaman", img: "aquaman.jpg" },
-  { name: "batman", img: "batman.jpg" },
-  { name: "captain america", img: "captain-america.jpg" },
-  { name: "fantastic four", img: "fantastic-four.jpg" },
-  { name: "flash", img: "flash.jpg" },
-  { name: "green arrow", img: "green-arrow.jpg" },
-  { name: "green lantern", img: "green-lantern.jpg" },
-  { name: "ironman", img: "ironman.jpg" },
-  { name: "spiderman", img: "spiderman.jpg" },
-  { name: "superman", img: "superman.jpg" },
-  { name: "the avengers", img: "the-avengers.jpg" },
-  { name: "thor", img: "thor.jpg" },
-  { name: "aquaman", img: "aquaman.jpg" },
-  { name: "batman", img: "batman.jpg" },
-  { name: "captain america", img: "captain-america.jpg" },
-  { name: "fantastic four", img: "fantastic-four.jpg" },
-  { name: "flash", img: "flash.jpg" },
-  { name: "green arrow", img: "green-arrow.jpg" },
-  { name: "green lantern", img: "green-lantern.jpg" },
-  { name: "ironman", img: "ironman.jpg" },
-  { name: "spiderman", img: "spiderman.jpg" },
-  { name: "superman", img: "superman.jpg" },
-  { name: "the avengers", img: "the-avengers.jpg" },
-  { name: "thor", img: "thor.jpg" },
+  { name: "aquaman", img: "aquaman.jpg", src: aquaman },
+  { name: "batman", img: "batman.jpg", src: batman },
+  { name: "captain america", img: "captain-america.jpg", src: captainAmerica },
+  { name: "fantastic four", img: "fantastic-four.jpg", src: fantasticFour },
+  { name: "flash", img: "flash.jpg", src: flash },
+  { name: "green arrow", img: "green-arrow.jpg", src: greenArrow },
+  { name: "green lantern", img: "green-lantern.jpg", src: greenLantern },
+  { name: "ironman", img: "ironman.jpg", src: ironman },
+  { name: "spiderman", img: "spiderman.jpg", src: spiderman },
+  { name: "superman", img: "superman.jpg", src: superman },
+  { name: "the avengers", img: "the-avengers.jpg", src: theAvengers },
+  { name: "thor", img: "thor.jpg", src: thor },
+
+  { name: "aquaman", img: "aquaman.jpg", src: aquaman },
+  { name: "batman", img: "batman.jpg", src: batman },
+  { name: "captain america", img: "captain-america.jpg", src: captainAmerica },
+  { name: "fantastic four", img: "fantastic-four.jpg", src: fantasticFour },
+  { name: "flash", img: "flash.jpg", src: flash },
+  { name: "green arrow", img: "green-arrow.jpg", src: greenArrow },
+  { name: "green lantern", img: "green-lantern.jpg", src: greenLantern },
+  { name: "ironman", img: "ironman.jpg", src: ironman },
+  { name: "spiderman", img: "spiderman.jpg", src: spiderman },
+  { name: "superman", img: "superman.jpg", src: superman },
+  { name: "the avengers", img: "the-avengers.jpg", src: theAvengers },
+  { name: "thor", img: "thor.jpg", src: thor },
 ];
 
 const CARDS = shuffle(
@@ -34,6 +48,7 @@ const CARDS = shuffle(
     return {
       id: index,
       img: card.img,
+      src: card.src,
       isFront: false,
       isVanished: false,
       isClickable: true,
@@ -115,7 +130,7 @@ const GameBoard = (props) => {
         <Card
           key={card.id}
           id={card.id}
-          src={"/assets/" + card.img}
+          src={card.src}
           isFront={card.isFront}
           isVanished={card.isVanished}
           isClickable={card.isClickable}

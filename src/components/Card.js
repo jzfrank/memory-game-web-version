@@ -12,7 +12,21 @@ const Card = (props) => {
   if (!props.isVanished && props.isFront) {
     className = "card turned";
     content = (
-      <div className="front" style={{ background: `url(${props.src})` }}></div>
+      <div
+        className="front"
+        style={{
+          backgroundImage: `url(${props.src})`,
+          backgroundRepeat: "no-repeat",
+        }}
+      ></div>
+      // <img
+      // className="front"
+      // src={props.src}
+      // style={{
+      //   backgroundImage: `url(${props.src})`,
+      //   backgroundRepeat: "no-repeat",
+      // }}
+      // />
     );
   }
 

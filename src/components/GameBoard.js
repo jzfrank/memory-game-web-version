@@ -80,8 +80,8 @@ const GameBoard = (props) => {
     const [card1, card2] = cards.filter((card) =>
       flippedCards.includes(card.id)
     );
-    console.table(card1);
-    console.table(card2);
+    // console.table(card1);
+    // console.table(card2);
     if (card1.img === card2.img) {
       setCards((prevCards) =>
         prevCards.map((card) => {
@@ -103,7 +103,7 @@ const GameBoard = (props) => {
 
   const flipCardHandler = (id) => {
     let newCards = cards.slice();
-    console.log("id", id);
+    // console.log("id", id);
     const indexOfFlippedCard = newCards.findIndex((card) => card.id === id);
     newCards[indexOfFlippedCard].isFront = true;
     setCards(newCards);

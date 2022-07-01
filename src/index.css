@@ -49,6 +49,7 @@ body {
 
 .card .back {
   background-color: #456783;
+  cursor: pointer;
 }
 
 .card .front {

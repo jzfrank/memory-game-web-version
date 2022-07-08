@@ -12,8 +12,12 @@ const MainWindow = () => {
   const title = <h1>Superhero Memory Game</h1>;
   return (
     <Fragment>
-      {title}
-      <ScoreBoard pairsClicked={pairsClicked} pairsGuessed={pairsGuessed} />
+      <div className="row container">
+        <div className="col s10">{title}</div>
+        <div className="col s2">
+          <ScoreBoard pairsClicked={pairsClicked} pairsGuessed={pairsGuessed} />
+        </div>
+      </div>
       {pairsGuessed !== totalPairs && (
         <GameBoard
           incrementPairsClicked={() => setPairsClicked((prev) => prev + 1)}

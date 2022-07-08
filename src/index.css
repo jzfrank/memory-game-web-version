@@ -8,20 +8,42 @@ body {
 
 #game-board {
   background: #dddddd;
-  width: 820px;
-  height: 540px;
-  padding: 70px;
-  margin: 0px auto;
-  border-radius: 84px;
+  /* width: 820px;
+  height: 540px; */
+  padding: 5vh;
+  margin: 5vh auto;
+  border-radius: 2vh;
   box-shadow: inset 0px 0px 20px -6px #615961;
 }
 
-.card {
+.custom-card {
   display: inline-block;
   perspective: 300px;
   transform-style: preserve-3d;
   position: relative;
+  transition: transform 0.6s ease;
 }
+
+.custom-card .front,
+.custom-card .back,
+.custom-card .vanished {
+  transition: transform 0.6s ease;
+}
+
+.custom-card .front {
+  left: 0;
+  top: 0;
+  transform: rotateY(-180deg) translateZ(1px);
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+}
+
+.custom-card .back {
+  background-color: #456783;
+  transform: rotateY(180deg);
+  cursor: pointer;
+}
+
 
 .card.turned {
   pointer-events: none;
@@ -39,10 +61,8 @@ body {
 .card .back,
 .card .front,
 .card .vanished {
-  width: 71px;
-  height: 71px;
-  margin: 10px;
-  padding: 20px;
+  width: 10vh;
+  height: 10vh;
   font-size: 64px;
   transition: transform 0.6s ease;
 }
@@ -53,7 +73,6 @@ body {
 }
 
 .card .front {
-  /* position: absolute; */
   left: 0;
   top: 0;
   transform: rotateY(-180deg) translateZ(1px);
@@ -66,18 +85,19 @@ body {
 
 #score {
   background-color: rgba(215, 44, 44, 0.8);
-  border-radius: 8px;
-  font-size: 30px;
-  font-family: Arial;
-  width: 200px;
-  padding: 20px;
-  margin-left: 75%;
+  font-family: 'Times New Roman', Times, serif;
+  border-radius: 1vh;
+  font-size: 4vh;
+  width: 20vh;
+  padding: 2vh;
+  margin: 2vh;
+  /* margin-left: 75%; */
 }
 
 h1 {
   color: rgba(215, 40, 40, 0.9);
   font-weight: bolder;
-  font-size: 67px;
+  font-size: 10vh;
   text-align: center;
   text-shadow: 0px 0px 20px #969696;
 }
@@ -86,13 +106,18 @@ h2 {
   margin-top: 0;
   color: #456783;
   font-weight: bolder;
-  font-size: 35px;
+  font-size: 5vh;
   text-align: center;
   text-shadow: 1px red;
 }
 
 p {
   font-weight: bolder;
-  font-size: 20px;
+  font-size: 3vh;
   text-align: center;
+}
+
+.top-bottom-margin {
+  margin-top: 0.5vh;
+  margin-bottom: 0.5vh;
 }

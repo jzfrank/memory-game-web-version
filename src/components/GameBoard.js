@@ -103,7 +103,6 @@ const GameBoard = (props) => {
 
   const flipCardHandler = (id) => {
     let newCards = cards.slice();
-    // console.log("id", id);
     const indexOfFlippedCard = newCards.findIndex((card) => card.id === id);
     newCards[indexOfFlippedCard].isFront = true;
     setCards(newCards);
@@ -125,7 +124,7 @@ const GameBoard = (props) => {
   };
 
   return (
-    <div id="game-board">
+    <div id="game-board" className="row container">
       {cards.map((card) => (
         <Card
           key={card.id}

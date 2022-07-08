@@ -8,7 +8,7 @@ const Card = (props) => {
     }
   };
 
-  const layoutClasses = "custom-card col s3 m2 top-bottom-margin";
+  let layoutClasses = "custom-card col s3 m2 top-bottom-margin";
 
   if (props.isVanished) {
     return (
@@ -19,7 +19,7 @@ const Card = (props) => {
   } else if (props.isFront) {
     return (
       <div className={layoutClasses}>
-        <img src={props.src} className=" responsive-img z-depth-5 front" />
+        <img src={props.src} className=" responsive-img z-depth-2 front" />
       </div>
     );
   } else {
